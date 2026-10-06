@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Web Designer & Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <style>
+
+    .logo img {
+    max-height: 45px; /* تجعل ارتفاع اللوجو مناسبًا للـ 75px الخاصة بالهيدر */
+    width: auto;      /* تحافظ على أبعاد اللوجو دون أن يتم مطّه */
+    display: block;
+}
+
+    /* =========================
+       VARIABLES
+    ========================= */
+
+    :root {
+      --black: #050505;
+      --black-2: #0a0a0a;
+      --black-3: #111111;
+
+      --gold: #d4af37;
+      --gold-light: #f1d675;
+      --gold-dark: #9f7d19;
+
+      --white: #ffffff;
+      --gray: #a5a5a5;
+      --border: rgba(212, 175, 55, 0.20);
+
+      --container: 1180px;
+    }
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--container));
+      margin: auto;
+    }
+
+    /* =========================
+       GOLD TEXT
+    ========================= */
+
+    .gold-text {
+      background: linear-gradient(
+        135deg,
+        var(--gold-dark),
+        var(--gold-light),
+        var(--gold)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+
+      z-index: 1000;
+
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d0d0d0;
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-contact {
+      padding: 9px 18px;
+
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+
+      color: var(--gold) !important;
+    }
+
+    .nav-contact:hover {
+      background: var(--gold);
+      color: #000 !important;
+    }
+
+    .menu-btn {
+      display: none;
+
+      background: none;
+      border: none;
+
+      color: var(--gold);
+      font-size: 25px;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 100px;
+
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      background: var(--gold);
+
+      opacity: 0.04;
+
+      border-radius: 50%;
+
+      filter: blur(100px);
+
+      top: 15%;
+      right: -100px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .available {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      border: 1px solid var(--border);
+
+      padding: 7px 14px;
+
+      border-radius: 30px;
+
+      color: #cfcfcf;
+
+      font-size: 12px;
+
+      margin-bottom: 25px;
+    }
+
+    .available i {
+      color: #4cff88;
+      font-size: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 75px);
+
+      line-height: 1.15;
+
+      font-weight: 900;
+
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 700px;
+
+      color: var(--gray);
+
+      font-size: 17px;
+
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      padding: 14px 23px;
+
+      border-radius: 8px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      transition: 0.3s;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+
+      color: #000;
+
+      box-shadow: 0 10px 30px rgba(212,175,55,0.15);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--gold);
+
+      color: var(--gold);
+
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+
+      color: #000;
+
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+
+      margin-bottom: 55px;
+    }
+
+    .section-title .small {
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 7px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 4vw, 45px);
+
+      font-weight: 900;
+
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+
+      max-width: 650px;
+
+      margin: auto;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 0.8fr 1.2fr;
+
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .about-box {
+      min-height: 300px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+
+      padding: 40px;
+
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+    }
+
+    .about-icon {
+      width: 75px;
+      height: 75px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--gold);
+
+      border-radius: 50%;
+
+      color: var(--gold);
+
+      font-size: 28px;
+
+      margin-bottom: 20px;
+    }
+
+    .about-box h3 {
+      font-size: 22px;
+    }
+
+    .about-box p {
+      color: var(--gray);
+
+      font-size: 13px;
+    }
+
+    .about-text h3 {
+      font-size: 30px;
+
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+
+      font-size: 15px;
+    }
+
+    .tech-list {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .tech {
+      border: 1px solid var(--border);
+
+      color: #ddd;
+
+      padding: 7px 13px;
+
+      border-radius: 7px;
+
+      font-size: 12px;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 15px;
+    }
+
+    .skill {
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      padding: 25px;
+
+      border-radius: 12px;
+
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      border-color: var(--gold);
+
+      transform: translateY(-5px);
+    }
+
+    .skill i {
+      color: var(--gold);
+
+      font-size: 23px;
+
+      margin-bottom: 15px;
+    }
+
+    .skill h3 {
+      font-size: 16px;
+
+      margin-bottom: 5px;
+    }
+
+    .skill p {
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================= */
+
+    .portfolio-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .project {
+      min-height: 300px;
+
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+    }
+
+    /*
+      هنا لا توجد أي صور أو تصميمات.
+
+      أنت تضيف الصورة أو الفيديو بنفسك
+      داخل .project-media
+    */
+
+    .project-media {
+      height: 210px;
+
+      background: #0d0d0d;
+
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #555;
+
+      font-size: 13px;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 20px;
+    }
+
+    .project-info h3 {
+      font-size: 17px;
+
+      margin-bottom: 7px;
+    }
+
+    .project-info p {
+      color: var(--gray);
+
+      font-size: 12px;
+
+      margin-bottom: 12px;
+    }
+
+    .project-link {
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .service {
+      padding: 30px;
+
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      border-color: var(--gold);
+
+      transform: translateY(-5px);
+    }
+
+    .service-number {
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      margin-bottom: 20px;
+    }
+
+    .service i {
+      color: var(--gold);
+
+      font-size: 27px;
+
+      margin-bottom: 18px;
+    }
+
+    .service h3 {
+      font-size: 17px;
+
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: var(--gray);
+
+      font-size: 13px;
+    }
+
+    .pricing-note {
+      text-align: center;
+
+      margin-top: 35px;
+
+      padding: 20px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      color: var(--gray);
+
+      font-size: 13px;
+    }
+
+    .pricing-note strong {
+      color: var(--gold);
+    }
+
+    /* =========================
+       WHY
+    ========================= */
+
+    .why-grid {
+      max-width: 850px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 12px;
+    }
+
+    .why {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 16px;
+
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 9px;
+    }
+
+    .why i {
+      color: var(--gold);
+    }
+
+    .why span {
+      font-size: 13px;
+    }
+
+    /* =========================
+       PROCESS
+    ========================= */
+
+    .process {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .step {
+      padding: 28px;
+
+      background: var(--black-2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--gold);
+
+      color: #000;
+
+      border-radius: 8px;
+
+      font-weight: 900;
+
+      margin-bottom: 15px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+
+      margin-bottom: 5px;
+    }
+
+    .step p {
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 75px 25px;
+
+      text-align: center;
+
+      border: 1px solid var(--gold);
+
+      border-radius: 18px;
+
+      background: var(--black-2);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 45px);
+
+      font-weight: 900;
+
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--gray);
+
+      margin-bottom: 25px;
+    }
+
+    .cta .buttons {
+      justify-content: center;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 45px 0 25px;
+
+      border-top: 1px solid var(--border);
+
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .footer-text {
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    .socials {
+      display: flex;
+
+      gap: 8px;
+    }
+
+    .social {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      color: var(--gold);
+
+      transition: 0.3s;
+    }
+
+    .social:hover {
+      background: var(--gold);
+
+      color: #000;
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .whatsapp {
+      position: fixed;
+
+      left: 20px;
+      bottom: 20px;
+
+      width: 57px;
+      height: 57px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #25d366;
+
+      color: #fff;
+
+      font-size: 27px;
+
+      z-index: 999;
+
+      box-shadow: 0 10px 30px rgba(37,211,102,0.25);
+
+      transition: 0.3s;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .portfolio-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 75px;
+
+        right: 4%;
+        left: 4%;
+
+        padding: 20px;
+
+        background: #090909;
+
+        border: 1px solid var(--border);
+
+        border-radius: 12px;
+
+        flex-direction: column;
+
+        gap: 18px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-contact {
+        width: 100%;
+
+        text-align: center;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .skills-grid,
+      .portfolio-grid,
+      .services-grid,
+      .why-grid,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header>
+
+    <div class="container">
+
+      <nav>
+
+        <!-- غيّر الاسم هنا -->
+       <a href="#" class="logo">
+    <img src="images/logo.png" alt="اللوجو">
+    <span>HG - ALordany</span>
+</a>
+
+        <button class="menu-btn" id="menuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+          <li>
+            <a href="#home">الرئيسية</a>
+          </li>
+
+          <li>
+            <a href="#about">من أنا</a>
+          </li>
+
+          <li>
+            <a href="#skills">مهاراتي</a>
+          </li>
+
+          <li>
+            <a href="#portfolio">أعمالي</a>
+          </li>
+
+          <li>
+            <a href="#services">خدماتي</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="nav-contact">
+              تواصل معي
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content reveal">
+
+        <div class="available">
+          <i class="fa-solid fa-circle"></i>
+          متاح لاستقبال مشاريع جديدة
+        </div>
+
+        <h1>
+
+          أصمم مواقع إلكترونية
+
+          <span class="gold-text">
+            احترافية
+          </span>
+
+          تساعد مشروعك على الظهور بشكل أفضل
+
+        </h1>
+
+        <p>
+
+          أصمم وأطور مواقع إلكترونية عصرية وسريعة ومتجاوبة
+          تناسب الشركات والمشاريع والفنادق والأماكن العامة والمدرسين.
+
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="https://wa.me/201143528106"
+            target="_blank"
+            class="btn btn-gold"
+          >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            تواصل معي على واتساب
+
+          </a>
+
+          <a
+            href="tel:01143528106"
+            class="btn btn-outline"
+          >
+
+            <i class="fa-solid fa-phone"></i>
+
+            اتصل بي الآن
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          ABOUT ME
+        </div>
+
+        <h2>
+          من أنا؟
+        </h2>
+
+        <p>
+          مصمم ومطور مواقع مهتم ببناء تجارب رقمية حديثة.
+        </p>
+
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-box reveal">
+
+          <div class="about-icon">
+
+            <i class="fa-solid fa-code"></i>
+
+          </div>
+
+          <h3>
+            Web Designer & Developer
+          </h3>
+
+          <p>
+            تصميم وتطوير مواقع حديثة ومتجاوبة.
+          </p>
+
+        </div>
+
+        <div class="about-text reveal">
+
+          <h3>
+
+            أحوّل الأفكار إلى
+
+            <span class="gold-text">
+              مواقع احترافية
+            </span>
+
+          </h3>
+
+          <p>
+
+            أعمل على HTML وCSS وJavaScript،
+            بالإضافة إلى التقنيات والأدوات التي تساعدني
+            على بناء مواقع حديثة وسريعة ومتجاوبة.
+
+          </p>
+
+          <div class="tech-list">
+
+            <span class="tech">HTML</span>
+
+            <span class="tech">CSS</span>
+
+            <span class="tech">JavaScript</span>
+
+            <span class="tech">Responsive Design</span>
+
+            <span class="tech">UI / UX</span>
+
+            <span class="tech">Web Development</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          MY SKILLS
+        </div>
+
+        <h2>
+          مهاراتي
+        </h2>
+
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill reveal">
+
+          <i class="fa-brands fa-html5"></i>
+
+          <h3>HTML</h3>
+
+          <p>
+            بناء هيكل المواقع.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-brands fa-css3-alt"></i>
+
+          <h3>CSS</h3>
+
+          <p>
+            تصميم الواجهات.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-brands fa-js"></i>
+
+          <h3>JavaScript</h3>
+
+          <p>
+            إضافة التفاعل للمواقع.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-solid fa-mobile-screen"></i>
+
+          <h3>Responsive Design</h3>
+
+          <p>
+            دعم جميع الشاشات.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-solid fa-pen-ruler"></i>
+
+          <h3>UI / UX</h3>
+
+          <p>
+            تصميم تجربة استخدام جيدة.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-solid fa-code"></i>
+
+          <h3>Web Development</h3>
+
+          <p>
+            تطوير المواقع.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-solid fa-gauge-high"></i>
+
+          <h3>Optimization</h3>
+
+          <p>
+            تحسين أداء المواقع.
+          </p>
+
+        </div>
+
+        <div class="skill reveal">
+
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+          <h3>Modern Design</h3>
+
+          <p>
+            تصميمات عصرية.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       PORTFOLIO
+  ========================= -->
+
+  <section id="portfolio">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          MY WORK
+        </div>
+
+        <h2>
+          أعمالي
+        </h2>
+
+        <p>
+          هنا يمكنك إضافة Screenshots أو فيديوهات لمشاريعك.
+        </p>
+
+      </div>
+
+    <div class="portfolio-grid">
+
+    <!-- المشروع الأول -->
+    <div class="project reveal">
+        <div class="project-media">
+            <video controls width="100%">
+                <source src="videos/restaurant-1.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+        <div class="project-info">
+            <h3>موقع الكتروني لمطعم لمتنا الحلوة</h3>
+            <p>اكتب وصفًا قصيرًا للمشروع هنا.</p>
+            <span class="project-link">مشاهدة المشروع</span>
+        </div>
+    </div>
+
+    <!-- المشروع الثاني -->
+    <div class="project reveal">
+        <div class="project-media">
+            <video controls width="100%">
+                <source src="videos/restaurant-2.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+        <div class="project-info">
+            <h3>اسم المشروع الثاني</h3>
+            <p>اكتب وصفًا قصيرًا للمشروع هنا.</p>
+            <span class="project-link">مشاهدة المشروع</span>
+        </div>
+    </div>
+
+    <!-- المشروع الثالث -->
+    <div class="project reveal">
+        <div class="project-media">
+            <video controls width="100%">
+                <source src="videos/restaurant-3.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+        <div class="project-info">
+            <h3>اسم المشروع الثالث</h3>
+            <p>اكتب وصفًا قصيرًا للمشروع هنا.</p>
+            <span class="project-link">مشاهدة المشروع</span>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SERVICES
+  ========================= -->
+
+  <section id="services">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          SERVICES
+        </div>
+
+        <h2>
+          خدماتي
+        </h2>
+
+        <p>
+          حلول تصميم وتطوير مواقع تناسب احتياجات كل مشروع.
+        </p>
+
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            01
+          </div>
+
+          <i class="fa-solid fa-laptop-code"></i>
+
+          <h3>
+            تصميم وتطوير المواقع
+          </h3>
+
+          <p>
+            مواقع حديثة وتناسب احتياجاتك ومتجاوبة مع جميع الأجهزة.
+          </p>
+
+        </div>
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            02
+          </div>
+
+          <i class="fa-solid fa-building"></i>
+
+          <h3>
+            مواقع إلكترونيه للشركات
+          </h3>
+
+          <p>
+            مواقع احترافية لعرض خدمات الشركات ومعلوماتها.
+          </p>
+
+        </div>
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            03
+          </div>
+
+          <i class="fa-solid fa-hotel"></i>
+
+          <h3>
+            مواقع إلكترونيه للفنادق
+          </h3>
+
+          <p>
+            مواقع عصرية لعرض الفندق والغرف والخدمات.
+          </p>
+
+        </div>
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            04
+          </div>
+
+          <i class="fa-solid fa-store"></i>
+
+          <h3>
+            المشاريع والأماكن العامة
+          </h3>
+
+          <p>
+            مواقع للمطاعم والكافيهات والمشاريع والأماكن المختلفة.
+          </p>
+
+        </div>
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            05
+          </div>
+
+          <i class="fa-solid fa-chalkboard-user"></i>
+
+          <h3>
+            منصات للمدرسين
+          </h3>
+
+          <p>
+            مواقع للمدرسين والدورات والخدمات التعليمية.
+          </p>
+
+        </div>
+
+        <div class="service reveal">
+
+          <div class="service-number">
+            06
+          </div>
+
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+
+          <h3>
+            تطوير وتحسين المواقع
+          </h3>
+
+          <p>
+            تحسين التصميم والأداء وتجربة المستخدم.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="pricing-note reveal">
+
+        <strong>
+          دعنا نناقش تفاصيل مشروعك أولاً لنحدد الخطة و التكلفة المناسبة لك تماماً
+        </strong>
+
+        
+        
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       WHY ME
+  ========================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          WHY ME
+        </div>
+
+        <h2>
+          لماذا تختارني؟
+        </h2>
+
+      </div>
+
+      <div class="why-grid">
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-check"></i>
+
+          <span>
+            تصميم عصري واحترافي
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-mobile-screen"></i>
+
+          <span>
+            مواقع متوافقة مع الموبايل و الكمبيوتر
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-user"></i>
+
+          <span>
+            اهتمام بتجربة المستخدم
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-pen-ruler"></i>
+
+          <span>
+            تصميم حسب احتياجات المشروع و يتم التسليم في الوقت المحدد
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-code"></i>
+
+          <span>
+            إمكانية تطوير وتحسين المواقع
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-brands fa-whatsapp"></i>
+
+          <span>
+            تواصل مباشر وسهل
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <span>
+            اهتمام بالتفاصيل
+          </span>
+
+        </div>
+
+        <div class="why reveal">
+
+          <i class="fa-solid fa-bolt"></i>
+
+          <span>
+            مواقع خفيفة وسريعة
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       PROCESS
+  ========================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <div class="small">
+          PROCESS
+        </div>
+
+        <h2>
+          طريقة العمل
+        </h2>
+
+      </div>
+
+      <div class="process">
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            01
+          </div>
+
+          <h3>
+            تواصل معي
+          </h3>
+
+          <p>
+            تواصل معي وأخبرني عن فكرة المشروع.
+          </p>
+
+        </div>
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            02
+          </div>
+
+          <h3>
+            تحديد الاحتياجات
+          </h3>
+
+          <p>
+            نحدد المطلوب والشكل المناسب للموقع.
+          </p>
+
+        </div>
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <h3>
+            التصميم والتطوير
+          </h3>
+
+          <p>
+            أبدأ في تصميم وتطوير الموقع.
+          </p>
+
+        </div>
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            04
+          </div>
+
+          <h3>
+            المراجعة
+          </h3>
+
+          <p>
+            مراجعة الموقع وإجراء التعديلات المطلوبة.
+          </p>
+
+        </div>
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            05
+          </div>
+
+          <h3>
+            التحسين
+          </h3>
+
+          <p>
+            التأكد من الأداء وتجربة الاستخدام.
+          </p>
+
+        </div>
+
+        <div class="step reveal">
+
+          <div class="step-number">
+            06
+          </div>
+
+          <h3>
+            تسليم المشروع
+          </h3>
+
+          <p>
+            تجهيز وتسليم المشروع بالشكل المتفق عليه.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       CTA
+  ========================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="cta reveal">
+
+        <h2>
+
+          عندك فكرة لموقع؟
+
+          <span class="gold-text">
+            خلينا ننفذها.
+          </span>
+
+        </h2>
+
+        <p>
+          أرسل لي تفاصيل مشروعك وسنتحدث عن أفضل طريقة لتنفيذه.
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="https://wa.me/201143528106"
+            target="_blank"
+            class="btn btn-gold"
+          >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            تواصل معي على واتساب
+
+          </a>
+
+          <a
+            href="tel:01143528106"
+            class="btn btn-outline"
+          >
+
+            <i class="fa-solid fa-phone"></i>
+
+            اتصل بي
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <div>
+
+          <div class="logo">
+            <span>WEB</span> DESIGNER
+          </div>
+
+          <div class="footer-text">
+            Web Designer & Developer
+          </div>
+
+        </div>
+
+        <div class="footer-text">
+
+          © <span id="year"></span>
+          جميع الحقوق محفوظة.
+
+        </div>
+
+        <div class="socials">
+
+          <a
+            href="https://wa.me/201143528106"
+            target="_blank"
+            class="social"
+          >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+          </a>
+
+          <a
+            href="tel:01143528106"
+            class="social"
+          >
+
+            <i class="fa-solid fa-phone"></i>
+
+          </a>
+
+          <!-- ضع رابط TikTok هنا -->
+
+          <a
+            href="#"
+            class="social"
+          >
+
+            <i class="fa-brands fa-tiktok"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       FLOATING WHATSAPP
+  ========================= -->
+
+  <a
+    href="https://wa.me/201143528106"
+    target="_blank"
+    class="whatsapp"
+  >
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+  </a>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* Mobile Menu */
+
+    const menuBtn = document.getElementById("menuBtn");
+
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function() {
+
+      navLinks.classList.toggle("active");
+
+      const icon = menuBtn.querySelector("i");
+
+      if (navLinks.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+      } else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+      }
+
+    });
+
+    /* Close Menu */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", function() {
+
+        navLinks.classList.remove("active");
+
+        const icon = menuBtn.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+      });
+
+    });
+
+    /* Scroll Animation */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+    /* Current Year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
